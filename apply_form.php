@@ -7,7 +7,7 @@ $query="select * from jobseeker";
  $result=mysqli_query($connection,$query);
 $data=mysqli_fetch_assoc($result);
 ?>
-<div class="mt-5">
+<div style="margin-top:80px">
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
