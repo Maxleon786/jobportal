@@ -1,4 +1,11 @@
 <?php include('head.php'); ?>
+<?php
+$id=$_GET['jid'];
+$query="select * from all_job LEFT JOIN company ON all_job.customer_email=company.admin where job_id=$id";
+ $result=mysqli_query($connection,$query);
+ $rw=mysqli_num_rows($result);
+ $data=mysqli_fetch_assoc($result);
+?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -8,12 +15,9 @@
 
 		<!-- partial -->
         <div style="margin-top:80px">
-
         </div>
 		<div class="main-panel">
 			<div class="container">
-
-
 				<div class="row">
 					<div class="col-md-4 grid-margin stretch-card">
 						<div class="card">
@@ -30,9 +34,9 @@
 								</div>
 
 								<div class="profile-content">
-									<div class="profile-name">Santosh Ghimire</div>
-									<div class="profile-designation">Webdeveloper</div>
-									<p class="profile-description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
+									<div class="profile-name"> <?php echo $data['admin'];?></div>
+									<div class="profile-designation"><?php echo $data['cname'];?></div>
+									<p class="profile-description"><?php echo $data['des'];?>.</p>
 									<ul class="profile-info-list">
 										<a href="" class="profile-info-list-item"><i class="mdi mdi-eye"></i>Timeline</a>
 										<a href="" class="profile-info-list-item"><i class="mdi mdi-bookmark-check"></i>Saved</a>
@@ -48,14 +52,14 @@
 					<div class="col-md-8 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<p class="card-title font-weight-bold">About</p>
+								<p class="card-title font-weight-bold">Job details</p>
 								<hr>
-								<p class="card-description">User Information</p>
+								<p class="card-description">Job Information</p>
 								<ul class="about">
-									<li class="about-items"><i class="mdi mdi-account icon-sm "></i><span class="about-item-name">Name:</span><span class="about-item-detail">Santosh Ghimire</span><a href="" class="about-item-edit">Edit</a></li>
-									<li class="about-items"><i class="mdi mdi-mail-ru icon-sm "></i><span class="about-item-name">username:</span><span class="about-item-detail">santoshghimire</span> <a href="" class="about-item-edit">Edit</a></li>
-									<li class="about-items"><i class="mdi mdi-lock-outline icon-sm "></i><span class="about-item-name">Password:</span><span class="about-item-detail">**********</span> <a href="" class="about-item-edit">Edit</a></li>
-									<li class="about-items"><i class="mdi mdi-format-align-left icon-sm "></i><span class="about-item-name">Bio:</span><span class="about-item-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto totam, nemo quidem delectus dolores vero porro inventore perferendis minus perspiciatis.</span> <a href="" class="about-item-edit">Edit</a></li>
+									<li class="about-items"><i class="mdi mdi-account icon-sm "></i><span class="about-item-name">Job Title:</span><span class="about-item-detail"><?php echo $data['job_title'];?></span></li>
+									<li class="about-items"><i class="mdi mdi-mail-ru icon-sm "></i><span class="about-item-name">Type:</span><span class="about-item-detail"><?php echo $data['type'];?></span> </li>
+									<li class="about-items"><i class="fa-sharp fa-solid fa-money-bill-wave"></i><span class="about-item-name">Salary:</span><span class="about-item-detail"> ₹<?php echo $data['salary'];?></span></li>
+									<li class="about-items"><i class="mdi mdi-format-align-left icon-sm "></i><span class="about-item-name">Description:</span><span class="about-item-detail"><?php echo $data['description'];?>.</span> </li>
 									
                        <li class="about-items"><i class="mdi mdi-trophy-variant-outline icon-sm "></i><span class="about-item-name">Badges:</span><span class="about-item-detail">
                        <button type="button" class="btn btn-success btn-rounded btn-icon">
@@ -72,10 +76,10 @@
 								</ul>
 								<p class="card-description">Contact Information</p>
 								<ul class="about">
-									<li class="about-items"><i class="mdi mdi-phone icon-sm "></i><span class="about-item-name">Phone:</span><span class="about-item-detail">+9779861106179</span><a href="" class="about-item-edit">Edit</a></li>
-									<li class="about-items"><i class="mdi mdi-map-marker icon-sm "></i><span class="about-item-name">Address:</span><span class="about-item-detail">254 National Highway , Hisar India</span> <a href="" class="about-item-edit">Edit</a></li>
-									<li class="about-items"><i class="mdi mdi-email-outline icon-sm "></i><span class="about-item-name">Email:</span><span class="about-item-detail"><a href="">reasonghimire706@gmail.com</a></span> <a href="" class="about-item-edit">Edit</a></li>
-									<li class="about-items"><i class="mdi mdi-web icon-sm "></i><span class="about-item-name">Site:</span><span class="about-item-detail"><a href="google.com">www.google.com</a></span> <a href="" class="about-item-edit">Edit</a></li>
+									<li class="about-items"><i class="mdi mdi-phone icon-sm "></i><span class="about-item-name">Phone:</span><span class="about-item-detail">+9779861106179</span></li>
+									<li class="about-items"><i class="mdi mdi-map-marker icon-sm "></i><span class="about-item-name">Address:</span><span class="about-item-detail"><?php echo $data['address'];?></span> </li>
+									<li class="about-items"><i class="mdi mdi-email-outline icon-sm "></i><span class="about-item-name">Email:</span><span class="about-item-detail"><a href=""><?php echo $data['admin'];?></a></span> </li>
+									<li class="about-items"><i class="mdi mdi-web icon-sm "></i><span class="about-item-name">Site:</span><span class="about-item-detail"><a href="google.com">www.google.com</a></span> </li>
 								</ul>
 								<p class="card-description">Basic Information</p>
 								<ul class="about">
@@ -84,25 +88,18 @@
 									<li class="about-items"><i class="mdi mdi-clipboard-account icon-sm "></i><span class="about-item-name">Profession:</span><span class="about-item-detail">Student</span> <a href="" class="about-item-edit">Edit</a></li>
 									<li class="about-items"><i class="mdi mdi-water icon-sm "></i><span class="about-item-name">Blood Group:</span><span class="about-item-detail">AB+</span> <a href="" class="about-item-edit">Edit</a></li>
 									<li class="about-items"><i class="mdi mdi-human-male-female icon-sm "></i><span class="about-item-name">Relationship Status:</span><span class="about-item-detail">Single</span> <a href="" class="about-item-edit">Edit</a></li>
-									<li class="about-items btn btn-primary"><a href="apply_form.php" class="text-white">Apply Now</a></li>
+									<li class="about-items btn btn-primary"><a href="apply_form.php?jid=<?php echo $data['job_id']; ?>" class="text-white">Apply Now</a></li>
 								</ul>
-
 
 							</div>
 						</div>
 					</div>
-
 				</div>
-
-
-
-
 			</div>
 			<!-- content-wrapper ends -->
 			<!-- partial:partials/_footer.html -->
-
-			<?php include('foot.php'); ?>
 			<!-- partial -->
 		</div>
         </div>
-		<!-- main-panel ends -->
+		<?php include('foot.php'); ?>
+		

@@ -1,6 +1,6 @@
 <!-- <?php include('head.php'); ?>
 <?php
-$query="select * from all_job LEFT JOIN company ON all_job.customer_email=company.admin  order by  post_date desc limit 5";
+$query="select * from all_job LEFT JOIN company ON all_job.customer_email=company.admin  order by  post_date desc ";
  $result=mysqli_query($connection,$query);
  $rw=mysqli_num_rows($result);
 ?>
@@ -38,15 +38,16 @@ $query="select * from all_job LEFT JOIN company ON all_job.customer_email=compan
         <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
             <div class="card border-0 bg-light rounded shadow">
                 <div class="card-body p-4">
-                    <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0">Full time</span>
-                    <h5>Web Designer</h5>
+                    <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0"><?php echo $data['type'];?></span>
+                    <h5><?php echo $data['job_title'];?></h5>
                     <div class="mt-3">
-                        <span class="text-muted d-block"><i class="fa fa-home" aria-hidden="true"></i> <a href="#" target="_blank" class="text-muted">Bootdey.com LLC.</a></span>
-                        <span class="text-muted d-block"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $data['contri'];?></span>
+                        <span class="text-muted d-block"><i class="fa fa-home" aria-hidden="true"></i> <a href="#" target="_blank" class="text-muted"><?php echo $data['cname'];?></a></span>
+                        <span class="text-muted d-block"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $data['city'];?>, <?php echo $data['state'];?></span>
+                          <span class="text-muted d-block mt-1">Upto ₹<?php echo $data['salary'];?> a Month</span>
                     </div>
                     
                     <div class="mt-3">
-                        <a href="job_details.php?jid=<?php echo $data['contri'];?>" class="btn btn-primary">View Details</a>
+                        <a href="job_details.php?jid=<?php echo $data['job_id'];?>" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
             </div>

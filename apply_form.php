@@ -7,8 +7,8 @@ $query="select * from jobseeker";
  $result=mysqli_query($connection,$query);
 $data=mysqli_fetch_assoc($result);
 ?>
-<div style="margin-top:80px">
-<div class="container rounded bg-white mt-5 mb-5">
+<div style="margin-top:80px;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+<div class="container rounded bg-white mt-5 mb-5 " >
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"><?php echo $data['fname'];?> <?php echo $data['lname'];?></span><span class="text-black-50"><?php echo $_SESSION['email'];?></span><span> </span></div>

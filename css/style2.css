@@ -1085,8 +1085,8 @@ body{margin-top:20px;}
     border-radius: 5px;
 }
 .btn-primary {
-    background-color: #6dc77a !important;
-    border: 1px solid #6dc77a !important;
+    background-color:#0d6efd !important;
+    border: 1px solid #0d6efd !important;
     color: #fff !important;
     box-shadow: 0 3px 7px rgb(109 199 122 / 50%);
 }

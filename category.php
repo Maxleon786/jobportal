@@ -12,7 +12,9 @@
             <ul class="category-group">
                 <?php while($data=mysqli_fetch_assoc($result)){?>
                 <li class="list"><a href="cate.php?cid=<?php echo $data['id'];?>"><h4><?php echo $data['category'];?></h4></a></li>
+                
                 <?php }?>
+              
             </ul>
         </div>
     </div>
