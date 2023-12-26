@@ -32,7 +32,7 @@ $query="select * from all_job LEFT JOIN company ON all_job.customer_email=compan
                 </div>
                 <div class="job-post-item-body d-block d-md-flex">
                   <div class="mr-3"><span class="icon-layers"></span> <a href="#"><?php echo $data['cname'];?></a></div>
-                  <div><span class="icon-my_location"></span> <span><?php echo $data['contri'];?>,<?php echo $data['state'];?>,<?php echo $data['city'];?></span><i class="mdi mdi-map-marker icon-sm "></i></div>
+                  <div><span class="icon-my_location"></span> <span><?php echo $data['contri'];?>,<?php echo $data['state'];?>,<?php echo $data['city'];?></span></div>
                 </div>
               </div>
                   <!-- job id -->
