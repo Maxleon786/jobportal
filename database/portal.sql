@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2023 at 11:39 AM
+-- Generation Time: Dec 27, 2023 at 10:04 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -167,6 +167,28 @@ INSERT INTO `company` (`cid`, `cname`, `description`, `admin`, `des`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `title`) VALUES
+(1, 'Software Developer'),
+(2, 'Data Analyst'),
+(3, 'Web Designer'),
+(4, 'Project Manager'),
+(5, 'Marketing Specialist');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jobseeker`
 --
 
@@ -244,6 +266,29 @@ INSERT INTO `job_category` (`id`, `category`, `des`) VALUES
 (2, 'web Developer ', 'this is poli description'),
 (8, 'video editors ', 'hello');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `id` int(11) NOT NULL,
+  `Lname` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`id`, `Lname`) VALUES
+(1, 'Surat,Gujrat'),
+(2, 'Mumbai,Maharastra'),
+(3, 'Ahmdabad,Gujrat'),
+(4, 'Rajkot,Gujrat'),
+(5, 'Bengaluru,Karnataka'),
+(6, 'Pune,Maharashtra');
+
 --
 -- Indexes for dumped tables
 --
@@ -267,6 +312,12 @@ ALTER TABLE `company`
   ADD PRIMARY KEY (`cid`);
 
 --
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jobseeker`
 --
 ALTER TABLE `jobseeker`
@@ -282,6 +333,12 @@ ALTER TABLE `job_apply`
 -- Indexes for table `job_category`
 --
 ALTER TABLE `job_category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -307,6 +364,12 @@ ALTER TABLE `company`
   MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `jobseeker`
 --
 ALTER TABLE `jobseeker`
@@ -323,6 +386,12 @@ ALTER TABLE `job_apply`
 --
 ALTER TABLE `job_category`
   MODIFY `id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

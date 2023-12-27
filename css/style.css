@@ -312,7 +312,8 @@ body.dark .search-field i {
 /* search - job inside image */
 
 
-.find-job-sec {
+/* old css of find-job-sec */
+/* .find-job-sec {
     width: 100%;
 }
 
@@ -389,9 +390,119 @@ body.dark .search-field i {
     width: 1px;
     height: 27px;
     background-color: #c6c6c1;
+} */
+
+/* new css of find-job-sec */
+.find-job-sec {
+    width: 100%;
+}
+
+.find-job-sec form {
+    width: 771px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 8px;
+    position: absolute;
+    right: 50%;
+    bottom: 10%;
+    transform: translate(50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+.find-job-sec form .find-job-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.find-job-sec .find-job-input .job-input {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+}
+
+.find-job-sec .find-job-input .job-input span {
+    width: 24px;
+    font-size: 18px;
+    background-color: white;
+    text-align: center;
+    margin: 0 8px;
+
+}
+
+.find-job-sec .job-input input {
+    border: none;
+    padding: 8px 8px 8px 4px;
+    font-size: 15px;
+    display: block;
+}
+
+.find-job-sec .job-input div.auto-box{
+    position: absolute;
+    width: 100%;
+    background-color: rgb(11, 1, 1);
+    color: wheat;
+    display: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    top: 55px;
+    opacity: 1;
+    z-index: 5;
+}
+
+.find-job-sec .job-input .auto-box ul{
+    padding: 5px;
+    margin: 0;
+    transition: all 1s;
+}
+
+.find-job-sec .job-input .auto-box ul li{
+    margin: 8px 0;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.find-job-sec .job-input .auto-box ul li:hover{
+    width: fit-content;
+    padding: 5px;
+    background-color: cyan;
+    border-radius: 5px;
+    color: black;
+}
+
+.find-job-sec .job-input input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.find-job-sec .find-job-btn input {
+    padding: 12px 16px;
+    margin: 8px 0;
+    margin-left: 8px;
+    background-color: var(--nav-color);
+    color: white;
+    border: none;
+    font-size: 13px;
+    border-radius: 10px;
+    font-weight: bold;
+    display: block;
 }
 
 
+.find-job-sec span.line {
+    width: 1px;
+    height: 27px;
+    background-color: #c6c6c1;
+}
 
 
 /* category */

@@ -45,14 +45,13 @@ $raw=mysqli_num_rows($result);
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-      </div>
-
-
-        <!-- image section end -->
+            
+            
+            <!-- image section end -->
 
         <!-- job search section start-->
       
-        <div class="find-job-sec">
+        <!-- <div class="find-job-sec">
             <form action="#">
                 <div class="find-job-input">
                     <div class="job-input search1">
@@ -69,8 +68,109 @@ $raw=mysqli_num_rows($result);
                     <input type="submit" name="submit" value="Find jobs">
                 </div>
             </form>
-          </div>
+          </div> -->
 
+          <!-- job search section start-->
+
+        <div class="find-job-sec">
+            <form action="" style="box-shadow: unset !important;">
+                <div class="find-job-input">
+                    <div class="job-input search1">
+                        <span><i class="fa-solid fa-magnifying-glass search-logo"></i></span>
+                        <input type="search" class="form-control search-input" id="search" name="search-job"
+                        placeholder="Job title, company" autocomplete="off">
+                        <div class="auto-box">
+                            <ul id="dropjobs">
+
+                                </ul>
+                        </div>
+                    </div>
+                    <span class="line"></span>
+                    <div class="job-input search2">
+                        <span><i class="fa-solid fa-location-dot search-logo"></i></span>
+                        <input type="search" class="form-control search-input" id="inlineFormInputGroup"
+                            name="search-location" placeholder="City, state" autocomplete="off">
+                            <div class="auto-box">
+                                <ul id="droplocation">
+                                    
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="find-job-btn">
+                    <input type="submit" name="submit" value="Find jobs">
+                </div>
+            </form>
+        </div>
+
+        <!-- script of search job start -->
+        <script>
+        $(document).ready(function ($) {
+            // Function to handle input focus
+            function handleInputFocus(input, autoBox, boxtype) {
+                $(input).on('focus', function () {
+                    $(autoBox).show();
+                    // Disable the other input box
+                    $(".find-job-input .search" + (boxtype === 1 ? 2 : 1) + " .search-input").prop('disabled', true);
+                    // Hide the auto-box of the other input box
+                    $(".find-job-input .search" + (boxtype === 1 ? 2 : 1) + " .auto-box").hide();
+                }).on('blur', function () {
+                    // Enable the other input box when focus is lost
+                    $(".find-job-input .search" + (boxtype === 1 ? 2 : 1) + " .search-input").prop('disabled', false);
+                });
+            }
+
+            // Function to handle AJAX
+            function Ajax(Input, dropbox, boxtype, table) {
+                $(Input).keyup(function () {
+                    $.ajax({
+                        url: "search.php",
+                        method: "post",
+                        data: {
+                            "term": $(Input).val(),
+                            "table": table
+                        },
+                        success: function (response) {
+                            $(dropbox).html(response);
+                        }
+                    });
+                    if ($(Input).val().length > 0) {
+                        $(".find-job-input .search" + boxtype + " .auto-box").show();
+                    } else {
+                        $(".find-job-input .search" + boxtype + " .auto-box").hide();
+                    }
+                });
+
+                // Call the function to handle input focus
+                handleInputFocus(Input, ".find-job-input .search" + boxtype + " .auto-box", boxtype);
+
+                $(".find-job-input .search" + boxtype + " .fa-magnifying-glass").click(function () {
+                    $(".find-job-input .search" + boxtype + " .auto-box").hide();
+                });
+
+                // Handle search event to hide the auto-box when clear button is clicked
+                $(".find-job-input .search" + boxtype + " .search-input").on('search', function () {
+                    $(".find-job-input .search" + boxtype + " .auto-box").hide();
+                });
+            }
+
+            // Set up AJAX for the first input box
+            Ajax(".find-job-input .search1 .search-input", ".find-job-input .search1 #dropjobs", 1, "jobs");
+
+            // Set up AJAX for the second input box
+            Ajax(".find-job-input .search2 .search-input", ".find-job-input .search2 #droplocation", 2, "location");
+
+        });
+        // Handle click on the magnifying glass icon to hide the auto-box
+
+        function putdata(data, view) {
+            $(".find-job-input .search" + view + " .search-input").val(data);
+            $(".find-job-input .search" + view + " .auto-box").hide();
+        }
+    </script>
+        <!-- job search script section end-->
+    </div>
+</div>
     
 
     <!-- job search section start-->

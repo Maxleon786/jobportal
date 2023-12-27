@@ -1,4 +1,6 @@
-<?php include('head.php'); ?>
+<?php
+include('head.php');
+/* 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -43,5 +45,37 @@
 </div>
 </div>
 
-			<?php include('foot.php'); ?>
+			<?php include('foot.php');
+            
+            */ 
+            
+
+            // Connect to the database
+            // $connection = mysqli_connect("localhost", "root", "", "portal");
+            
+            function fetchData($column, $table, $view)
+            {
+                $term = isset($_POST['term']) ? $_POST['term'] : '';
+                $table = isset($_POST['table']) ? $_POST['table'] : '';
+            
+                $result = mysqli_query($GLOBALS['connection'], "SELECT $column FROM $table WHERE $column LIKE '%" . $term . "%'");
+            
+                if (mysqli_num_rows($result) > 0) {
+                    while ($data = mysqli_fetch_array($result)) {
+                        echo "<li onclick='putdata(this.innerHTML, $view)'>" . $data[$column] . "</li>";
+                    }
+                } else {
+                    echo "<li>No data found</li>";
+                }
+            }
+            
+            // Determine which fetchData to call based on the table parameter
+            if ($_POST['table'] == 'jobs') {
+                fetchData('title', 'jobs', 1);
+            } elseif ($_POST['table'] == 'location') {
+                fetchData('Lname', 'location', 2);
+            }
+            
+            ?>
+                    
 			
